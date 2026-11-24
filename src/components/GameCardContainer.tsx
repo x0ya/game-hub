@@ -1,19 +1,15 @@
 import { Box } from "@chakra-ui/react";
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-const GameCardContainer = ({children}: Props) => {
-  return (
-    <Box width="325px">
-        {children}
-    </Box>
-  )
-}
+const GameCardContainer = ({ children }: Props) => {
+  return <Box width="300px">{children}</Box>;
+};
 
-export default GameCardContainer
+export default GameCardContainer;
 
 //GameGrid
 // {isLoading &&
