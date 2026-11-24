@@ -1,13 +1,23 @@
 import useGenres from "@/hooks/useGenres";
+import { HStack, Image, List, Text } from "@chakra-ui/react";
 
 const FetchGenre = () => {
   const { data } = useGenres();
   return (
-    <ul>
+    <List.Root listStyle='none'>
       {data.map((genre) => (
-        <li key={genre.id}>{genre.name}</li>
+        <List.Item key={genre.id} paddingY="5px">
+          <HStack>
+            <Image
+              src={genre.image_background}
+              boxSize="32px"
+              borderRadius={8}
+            />
+            <Text>{genre.name}</Text>
+          </HStack>
+        </List.Item>
       ))}
-    </ul>
+    </List.Root>
   );
 };
 
