@@ -3,9 +3,10 @@ import { Button, HStack, Image, List, Spinner, Text } from "@chakra-ui/react";
 
 interface Props{
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const FetchGenre = ({onSelectedGenre}: Props) => {
+const FetchGenre = ({selectedGenre, onSelectedGenre}: Props) => {
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -16,13 +17,13 @@ const FetchGenre = ({onSelectedGenre}: Props) => {
       {data.map((genre) => (
         <List.Item key={genre.id} paddingY="5px">
           <HStack>
-            <Button onClick={() => onSelectedGenre(genre)} variant="plain" padding="0">
+            <Button variant={selectedGenre?.id === genre.id ? "subtle" : "ghost"} onClick={() => onSelectedGenre(genre)} padding="">
               <Image
                 src={genre.image_background}
                 boxSize="32px"
                 borderRadius={8}
               />
-              <Text>{genre.name}</Text>
+              <Text fontSize={selectedGenre?.id === genre.id ? "lg" : ""}>{genre.name}</Text>
             </Button>
           </HStack>
         </List.Item>
