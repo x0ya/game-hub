@@ -5,12 +5,14 @@ import {
   FaApple,
   FaLinux,
   FaAndroid,
+  FaGamepad,
 } from "react-icons/fa";
 import { MdPhoneIphone } from 'react-icons/md'
 import { BsNintendoSwitch, BsGlobe } from 'react-icons/bs'
 import type { Platform } from "@/hooks/useGames";
 import { HStack, Icon } from "@chakra-ui/react";
 import type { IconType } from "react-icons";
+import { SiSega } from "react-icons/si";
 
 interface Props {
   platforms: Platform[];
@@ -28,10 +30,13 @@ const PlatformIconList = ({ platforms }: Props) => {
     android: FaAndroid,
     ios: MdPhoneIphone,
     web: BsGlobe,
+    sega: SiSega,
+    "neo-geo": FaGamepad
   }
   return (
     <>
       <HStack marginY={2}>
+          {/* {platforms.filter((p) => !iconMap[p.slug]).map((p) => console.log("MISSING:", p.slug))} */}
           {platforms.map((platform) => (
             <Icon key={platform.id} as={iconMap[platform.slug]} color='gray.500'/>
           ))}
