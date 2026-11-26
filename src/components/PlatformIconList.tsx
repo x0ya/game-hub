@@ -7,20 +7,19 @@ import {
   FaAndroid,
   FaGamepad,
 } from "react-icons/fa";
-import { MdPhoneIphone } from 'react-icons/md'
-import { BsNintendoSwitch, BsGlobe } from 'react-icons/bs'
+import { MdOutlineGames, MdPhoneIphone } from "react-icons/md";
+import { BsNintendoSwitch, BsGlobe } from "react-icons/bs";
 import type { Platform } from "@/hooks/useGames";
 import { HStack, Icon } from "@chakra-ui/react";
 import type { IconType } from "react-icons";
-import { SiSega } from "react-icons/si";
+import { SiAtari, SiCommodore, SiSega } from "react-icons/si";
 
 interface Props {
   platforms: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
-
-  const iconMap: {[key: string]: IconType} = {
+  const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
     xbox: FaXbox,
@@ -31,22 +30,27 @@ const PlatformIconList = ({ platforms }: Props) => {
     ios: MdPhoneIphone,
     web: BsGlobe,
     sega: SiSega,
-    "neo-geo": FaGamepad
-  }
+    "neo-geo": FaGamepad,
+    atari: SiAtari,
+    "commodore-amiga": SiCommodore,
+    "3do": MdOutlineGames,
+  };
   return (
     <>
       <HStack marginY={2}>
-          {/* {platforms.filter((p) => !iconMap[p.slug]).map((p) => console.log("MISSING:", p.slug))} */}
-          {platforms.map((platform) => (
-            <Icon key={platform.id} as={iconMap[platform.slug]} color='gray.500'/>
-          ))}
+        {platforms.map((platform) => (
+          <Icon
+            key={platform.id}
+            as={iconMap[platform.slug]}
+            color="gray.500"
+          />
+        ))}
       </HStack>
     </>
   );
 };
 
 export default PlatformIconList;
-
 
 //useGames
 // export interface Platform{
@@ -62,7 +66,6 @@ export default PlatformIconList;
 // : string;
 //   parent_platforms: { platform: Platform} [];
 // }
-
 
 //GameCard
 //<PlatformIconList platforms={game.parent_platforms.map(p => p.platform)}/>
